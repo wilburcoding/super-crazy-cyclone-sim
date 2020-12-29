@@ -30,8 +30,8 @@ a{
 #version{
 	position: fixed;
 	float: right;
-	bottom: 0px;
-	right: 0px;
+	bottom: 8px;
+  	left: 16px;
 	color: #777;
 	padding: 10px;
 	z-index: 100;
