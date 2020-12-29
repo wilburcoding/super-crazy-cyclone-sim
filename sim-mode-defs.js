@@ -690,7 +690,7 @@ ENV_DEFS.defaults.SST = {
         offSeasonPolarTemp: -3,
         peakSeasonPolarTemp: 10,
         offSeasonTropicsTemp: 24,
-        peakSeasonTropicsTemp: 27
+        peakSeasonTropicsTemp: Math.floor(Math.random() * (35 - 28) + 28)
     }
 };
 ENV_DEFS[SIM_MODE_NORMAL].SST = {};
