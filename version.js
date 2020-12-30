@@ -26,7 +26,7 @@ function setVersion(p,n){
 }
 
 if(versionLink.tagName === "A"){
-	versionLink.setAttribute("href","./changelog.html");
+	versionLink.setAttribute("href","./changelog.html","_blank");
 }
 
 versionLinkUpdate();
