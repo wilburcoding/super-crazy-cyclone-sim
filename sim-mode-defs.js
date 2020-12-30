@@ -722,10 +722,10 @@ ENV_DEFS[SIM_MODE_MEGABLOBS].SST = {
 ENV_DEFS[SIM_MODE_EXPERIMENTAL].SST = {
     version:1,
     modifiers: {
-        offSeasonPolarTemp: 20,
-        peakSeasonPolarTemp: 50,
-        offSeasonTropicsTemp: 75,
-        peakSeasonTropicsTemp: 100
+        offSeasonPolarTemp: -100,
+        peakSeasonPolarTemp: 100,
+        offSeasonTropicsTemp: -100,
+        peakSeasonTropicsTemp: -100
     }
 };
 
