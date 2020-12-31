@@ -6,7 +6,20 @@ body{
 	background: linear-gradient(#BBB,#F3F3F3);
 	font-family: Calibri, Arial;
 }
-
+a.one {
+	position: fixed;
+	float: right;
+	top: 8px;
+  	right: 16px;
+	color: #777;
+	padding: 10px;
+	z-index: 100;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+}
 a{
 	 width: 180px;
 	 height: 50px;
@@ -26,7 +39,7 @@ a{
 	 cursor: pointer;
 	 outline: none;
   }
-a:two {
+a.two {
 	position: fixed;
 	float: right;
 	top: 50px;
@@ -39,7 +52,7 @@ a:two {
 	-webkit-user-select: none;
 	-ms-user-select: none;
 }
-a:three {
+a.three {
 	position: fixed;
 	float: right;
 	top: 80px;
