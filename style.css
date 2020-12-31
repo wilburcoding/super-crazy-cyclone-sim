@@ -43,7 +43,7 @@ a{
 a.two {
 	position: fixed;
 	float: right;
-	top: 50px;
+	top: 70px;
   	right: 16px;
 	color: #777;
 	padding: 10px;
@@ -56,7 +56,7 @@ a.two {
 a.three {
 	position: fixed;
 	float: right;
-	top: 108px;
+	top: 150px;
   	right: 16px;
 	color: #777;
 	padding: 10px;
