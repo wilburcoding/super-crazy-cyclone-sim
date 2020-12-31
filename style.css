@@ -22,6 +22,7 @@ a.one {
 
 a{
 	 width: 180px;
+	 transition-duration: 0.4s;
 	 height: 50px;
 	 font-family: 'Roboto', sans-serif;
 	 font-size: 11px;
