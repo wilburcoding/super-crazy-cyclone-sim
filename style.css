@@ -26,7 +26,32 @@ a{
 	 cursor: pointer;
 	 outline: none;
   }
-
+a:two {
+	position: fixed;
+	float: right;
+	top: 50px;
+  	right: 16px;
+	color: #777;
+	padding: 10px;
+	z-index: 100;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+a:three {
+	position: fixed;
+	float: right;
+	top: 80px;
+  	right: 16px;
+	color: #777;
+	padding: 10px;
+	z-index: 100;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
 #version{
 	position: fixed;
 	float: right;
