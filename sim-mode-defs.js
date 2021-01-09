@@ -434,7 +434,29 @@ SPAWN_RULES[SIM_MODE_WPAC].doSpawn = function(b){
     // extratropical cyclones
     if(random()<0.01-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');      
 };	
-	
+SPAWN_RULES[SIM_MODE_EXTREME].doSpawn = function(b){
+    // tropic spawn area
+    if(random()<0.0014) b.spawnArchetype('wp1');		// main basin (t.o.cancer)
+    if(random()<0.0014) b.spawnArchetype('wp2');		// main basin (equator)
+	if(random()<0.0014) b.spawnArchetype('wp3');		// basin edge, philippines sea (t.o.cancer)
+    if(random()<0.0014) b.spawnArchetype('wp4');			// basin edge, philippines sea (equator)
+    if(random()<0.0005) b.spawnArchetype('wp5');   // basin edge, western IDL (t.o.cancer)
+    if(random()<0.0005) b.spawnArchetype('wp6');		// basin edge, western IDL (equator)
+	if(random()<0.0004) b.spawnArchetype('wp7');	// southern japan
+    if(random()<0.00015) b.spawnArchetype('wp8');		// CPAC, eastern IDL (crossover etc)
+    if(random()<0.00028125) b.spawnArchetype('wp9');	// northern SCS
+    if(random()<0.0001125) b.spawnArchetype('wp10');		// southern SCS
+    if(random()<0.0001125) b.spawnArchetype('wp11');	// gulf of tonkin
+    if(random()<0.00005625) b.spawnArchetype('wp12');	// southern vietnam
+    if(random()<0.00016875) b.spawnArchetype('wp13');	// southern china
+    if(random()<0.00016875) b.spawnArchetype('wp14');	// southeastern china
+    if(random()<0.00016875) b.spawnArchetype('wp15');	// taiwan coast
+    if(random()<0.00025) b.spawnArchetype('wp16');	// northern philippines
+    if(random()<0.000225) b.spawnArchetype('wp17');	// central philippines (eastern) 
+    if(random()<0.00016875) b.spawnArchetype('wp18');	// central philippines (western)
+    // extratropical cyclones
+    if(random()<0.01-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');      
+};		
 
 // -- Megablobs Mode -- //
 
