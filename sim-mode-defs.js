@@ -1,11 +1,13 @@
-const SIMULATION_MODES = ['Semi-realistic','Hyper','Wild','Megablobs','Experimental','West Pacific','Extreme']; // Labels for sim mode selector UI
-const SIM_MODE_NORMAL = 0;
-const SIM_MODE_HYPER = 1;
-const SIM_MODE_WILD = 2;
-const SIM_MODE_MEGABLOBS = 3;
-const SIM_MODE_EXPERIMENTAL = 4;
-const SIM_MODE_WPAC = 5;
-const SIM_MODE_EXTREME = 6;
+const SIMULATION_MODES = ['Below-Average','Normal','Above-Average','Hyper','Wild','Megablobs','Experimental','West Pacific','Extreme']; // Labels for sim mode selector UI
+const SIM_MODE_BELOWNORMAL = 1;
+const SIM_MODE_NORMAL = 2;
+const SIM_MODE_ABOVENORMAL = 3;
+const SIM_MODE_HYPER = 4;
+const SIM_MODE_WILD = 5;
+const SIM_MODE_MEGABLOBS = 6;
+const SIM_MODE_EXPERIMENTAL = 7;
+const SIM_MODE_WPAC = 8;
+const SIM_MODE_EXTREME = 9;
 // ---- Active Attributes ---- //
 
 // Active attributes are data of ActiveSystem not inherited from StormData; used for simulation of active storm systems
@@ -39,7 +41,9 @@ function ifJetstreamBound(b,x) {
 const SPAWN_RULES = {};
 
 SPAWN_RULES.defaults = {};
+SPAWN_RULES[SIM_MODE_BELOWNORMAL] = {};
 SPAWN_RULES[SIM_MODE_NORMAL] = {};
+SPAWN_RULES[SIM_MODE_ABOVENORMAL] = {};
 SPAWN_RULES[SIM_MODE_HYPER] = {};
 SPAWN_RULES[SIM_MODE_WILD] = {};
 SPAWN_RULES[SIM_MODE_MEGABLOBS] = {};
@@ -403,12 +407,22 @@ SPAWN_RULES[SIM_MODE_WILD].archetypes = {
         depth: 0
     }
 };
-
+SPAWN_RULES[SIM_MODE_BELOWAVERAGE].doSpawn = function(b){
+    if(random()<0.015) b.spawnArchetype('tw');
+    if(random()<0.01-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
+};
+SPAWN_RULES[SIM_MODE_ABOVEAVERAGE].doSpawn = function(b){
+    if(random()<0.015) b.spawnArchetype('tw');
+    if(random()<0.01-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
+};
 SPAWN_RULES[SIM_MODE_WILD].doSpawn = function(b){
     if(random()<0.015) b.spawnArchetype('tw');
     if(random()<0.01-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
 };
-
+SPAWN_RULES[SIM_MODE_EXTREME].doSpawn = function(b){
+    if(random()<0.015) b.spawnArchetype('tw');
+    if(random()<0.01-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
+};
 	   
 		
 SPAWN_RULES[SIM_MODE_WPAC].doSpawn = function(b){
@@ -434,29 +448,6 @@ SPAWN_RULES[SIM_MODE_WPAC].doSpawn = function(b){
     // extratropical cyclones
     if(random()<0.01-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');      
 };	
-SPAWN_RULES[SIM_MODE_EXTREME].doSpawn = function(b){
-    // tropic spawn area
-    if(random()<0.0014) b.spawnArchetype('wp1');		// main basin (t.o.cancer)
-    if(random()<0.0014) b.spawnArchetype('wp2');		// main basin (equator)
-	if(random()<0.0014) b.spawnArchetype('wp3');		// basin edge, philippines sea (t.o.cancer)
-    if(random()<0.0014) b.spawnArchetype('wp4');			// basin edge, philippines sea (equator)
-    if(random()<0.0005) b.spawnArchetype('wp5');   // basin edge, western IDL (t.o.cancer)
-    if(random()<0.0005) b.spawnArchetype('wp6');		// basin edge, western IDL (equator)
-	if(random()<0.0004) b.spawnArchetype('wp7');	// southern japan
-    if(random()<0.00015) b.spawnArchetype('wp8');		// CPAC, eastern IDL (crossover etc)
-    if(random()<0.00028125) b.spawnArchetype('wp9');	// northern SCS
-    if(random()<0.0001125) b.spawnArchetype('wp10');		// southern SCS
-    if(random()<0.0001125) b.spawnArchetype('wp11');	// gulf of tonkin
-    if(random()<0.00005625) b.spawnArchetype('wp12');	// southern vietnam
-    if(random()<0.00016875) b.spawnArchetype('wp13');	// southern china
-    if(random()<0.00016875) b.spawnArchetype('wp14');	// southeastern china
-    if(random()<0.00016875) b.spawnArchetype('wp15');	// taiwan coast
-    if(random()<0.00025) b.spawnArchetype('wp16');	// northern philippines
-    if(random()<0.000225) b.spawnArchetype('wp17');	// central philippines (eastern) 
-    if(random()<0.00016875) b.spawnArchetype('wp18');	// central philippines (western)
-    // extratropical cyclones
-    if(random()<0.01-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');      
-};		
 
 // -- Megablobs Mode -- //
 
@@ -582,6 +573,8 @@ ENV_DEFS[SIM_MODE_MEGABLOBS] = {}; // "Megablobs" simulation mode
 ENV_DEFS[SIM_MODE_EXPERIMENTAL] = {}; // "Experimental" simulation mode
 ENV_DEFS[SIM_MODE_WPAC] = {};	// westpac 
 ENV_DEFS[SIM_MODE_EXTREME] = {};
+ENV_DEFS[SIM_MODE_ABOVENORMAL] = {};
+ENV_DEFS[SIM_MODE_BELOWNORMAL] = {};
 // -- Sample Env Field -- //
 
 // ENV_DEFS.defaults.sample = {
@@ -673,7 +666,9 @@ ENV_DEFS[SIM_MODE_WPAC].jetstream = {
         peakRange: 0.25,
         antiPeakRange: 0.43
     }
-};    
+}; 
+ENV_DEFS[SIM_MODE_BELOWNORMAL].jetstream = {};   
+ENV_DEFS[SIM_MODE_ABOVENORMAL].jetstream = {}; 
 ENV_DEFS[SIM_MODE_EXTREME].jetstream = {};
 // -- LLSteering -- //
 
@@ -740,6 +735,8 @@ ENV_DEFS[SIM_MODE_WILD].LLSteering = {
         return u.vec;
     }
 };
+ENV_DEFS[SIM_MODE_ABOVENORMAL].LLSteering = {};
+ENV_DEFS[SIM_MODE_BELOWNORMAL].LLSteering = {};
 ENV_DEFS[SIM_MODE_NORMAL].LLSteering = {};
 ENV_DEFS[SIM_MODE_MEGABLOBS].LLSteering = {};
 ENV_DEFS[SIM_MODE_EXPERIMENTAL].LLSteering = {};
@@ -896,7 +893,9 @@ ENV_DEFS[SIM_MODE_WPAC].ULSteering = {
     modifiers: {
         hadleyUpperBound: 4
     }
-};    
+};   
+ENV_DEFS[SIM_MODE_BELOWAVERAGE].ULSteering = {};
+ENV_DEFS[SIM_MODE_ABOVEAVERAGE].ULSteering = {};
 ENV_DEFS[SIM_MODE_EXTREME].ULSteering = {};
 // -- shear -- //
 
@@ -940,6 +939,8 @@ ENV_DEFS[SIM_MODE_MEGABLOBS].shear = {};
 ENV_DEFS[SIM_MODE_EXPERIMENTAL].shear = {};
 ENV_DEFS[SIM_MODE_WPAC].shear = {};    
 ENV_DEFS[SIM_MODE_EXTREME].shear = {}; 
+ENV_DEFS[SIM_MODE_ABOVENORMAL].shear = {};
+ENV_DEFS[SIM_MODE_BELOWNORMAL].shear = {};
 // -- SSTAnomaly -- //
 
 ENV_DEFS.defaults.SSTAnomaly = {
@@ -1020,6 +1021,8 @@ ENV_DEFS[SIM_MODE_WPAC].SSTAnomaly = {
 	},
 };
 ENV_DEFS[SIM_MODE_EXTREME].SSTAnomaly = {};    
+ENV_DEFS[SIM_MODE_ABOVEAVERAGE].SSTAnomaly = {};    
+ENV_DEFS[SIM_MODE_BELOWAVERAGE].SSTAnomaly = {};    
 // -- SST -- //
 
 ENV_DEFS.defaults.SST = {
@@ -1068,7 +1071,7 @@ ENV_DEFS.defaults.SST = {
         offSeasonPolarTemp: -5,
         peakSeasonPolarTemp: -2,
         offSeasonTropicsTemp: 25,
-        peakSeasonTropicsTemp: 28
+        peakSeasonTropicsTemp: 28.5
     }
 };
 ENV_DEFS[SIM_MODE_NORMAL].SST = {};
@@ -1137,6 +1140,24 @@ ENV_DEFS[SIM_MODE_EXTREME].SST = {
         peakSeasonPolarTemp: 40,
         offSeasonTropicsTemp: 80,
         peakSeasonTropicsTemp: 100
+    }
+};
+ENV_DEFS[SIM_MODE_ABOVENORMAL].SST = {
+    version:1,
+    modifiers: {
+        offSeasonPolarTemp: -5,
+        peakSeasonPolarTemp: -1,
+        offSeasonTropicsTemp: 25,
+        peakSeasonTropicsTemp: 30
+    }
+};
+ENV_DEFS[SIM_MODE_ABOVENORMAL].SST = {
+    version:1,
+    modifiers: {
+        offSeasonPolarTemp: -5,
+        peakSeasonPolarTemp: -2,
+        offSeasonTropicsTemp: 24,
+        peakSeasonTropicsTemp: 27.5
     }
 };
 // -- moisture -- //
@@ -1211,6 +1232,8 @@ ENV_DEFS[SIM_MODE_WPAC].moisture = {
     }
 };    
 ENV_DEFS[SIM_MODE_EXTREME].moisture = {};
+ENV_DEFS[SIM_MODE_ABOVENORMAL].moisture = {};
+ENV_DEFS[SIM_MODE_BELOWNORMAL].moisture = {};
 // ---- Active Storm System Algorithm ---- //
 
 const STORM_ALGORITHM = {};
@@ -1223,6 +1246,8 @@ STORM_ALGORITHM[SIM_MODE_MEGABLOBS] = {};
 STORM_ALGORITHM[SIM_MODE_EXPERIMENTAL] = {};
 STORM_ALGORITHM[SIM_MODE_WPAC] = {};    
 STORM_ALGORITHM[SIM_MODE_EXTREME] = {};  
+STORM_ALGORITHM[SIM_MODE_ABOVEAVERAGE] = {};  
+STORM_ALGORITHM[SIM_MODE_BELOWAVERAGE] = {};  
 // -- Steering -- //
 
 STORM_ALGORITHM.defaults.steering = function(sys,vec,u){
@@ -1407,6 +1432,8 @@ STORM_ALGORITHM[SIM_MODE_MEGABLOBS].version = 0;
 STORM_ALGORITHM[SIM_MODE_EXPERIMENTAL].version = 1;
 STORM_ALGORITHM[SIM_MODE_WPAC].version = 0;    
 STORM_ALGORITHM[SIM_MODE_EXTREME].version = 0;  
+STORM_ALGORITHM[SIM_MODE_ABOVENORMAL].version = 0;  
+STORM_ALGORITHM[SIM_MODE_BELOWNORMAL].version = 0;  
 // -- Upgrade -- //
 // Converts active attributes in case an active system is loaded after an algorithm change breaks old values
 
