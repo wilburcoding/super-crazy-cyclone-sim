@@ -1,13 +1,13 @@
 const SIMULATION_MODES = ['Below-Average','Normal','Above-Average','Hyper','Wild','Megablobs','Experimental','West Pacific','Extreme']; // Labels for sim mode selector UI
-const SIM_MODE_BELOWNORMAL = 1;
-const SIM_MODE_NORMAL = 2;
-const SIM_MODE_ABOVENORMAL = 3;
-const SIM_MODE_HYPER = 4;
-const SIM_MODE_WILD = 5;
-const SIM_MODE_MEGABLOBS = 6;
-const SIM_MODE_EXPERIMENTAL = 7;
-const SIM_MODE_WPAC = 8;
-const SIM_MODE_EXTREME = 9;
+const SIM_MODE_BELOWNORMAL = 0;
+const SIM_MODE_NORMAL = 1;
+const SIM_MODE_ABOVENORMAL = 2;
+const SIM_MODE_HYPER = 3;
+const SIM_MODE_WILD = 4;
+const SIM_MODE_MEGABLOBS = 5;
+const SIM_MODE_EXPERIMENTAL = 6;
+const SIM_MODE_WPAC = 7;
+const SIM_MODE_EXTREME = 8;
 // ---- Active Attributes ---- //
 
 // Active attributes are data of ActiveSystem not inherited from StormData; used for simulation of active storm systems
