@@ -1,4 +1,4 @@
-const SIMULATION_MODES = ['Semi-realistic','Hyper','Wild','Megablobs','Experimental','West Pacific','Extreme']; // Labels for sim mode selector UI
+const SIMULATION_MODES = ['Above Average','Hyper','Wild','Megablobs','Experimental','West Pacific','Extreme']; // Labels for sim mode selector UI
 const SIM_MODE_NORMAL = 0;
 const SIM_MODE_HYPER = 1;
 const SIM_MODE_WILD = 2;
@@ -1066,9 +1066,9 @@ ENV_DEFS.defaults.SST = {
     oceanic: true,
     modifiers: {
         offSeasonPolarTemp: -5,
-        peakSeasonPolarTemp: -2,
-        offSeasonTropicsTemp: 25,
-        peakSeasonTropicsTemp: 28
+        peakSeasonPolarTemp: 0,
+        offSeasonTropicsTemp: 26,
+        peakSeasonTropicsTemp: 29
     }
 };
 ENV_DEFS[SIM_MODE_NORMAL].SST = {};
@@ -1091,10 +1091,10 @@ ENV_DEFS[SIM_MODE_WILD].SST = {
 };
 ENV_DEFS[SIM_MODE_MEGABLOBS].SST = {
     modifiers: {
-        offSeasonPolarTemp: -5,
-        peakSeasonPolarTemp: 20,
-        offSeasonTropicsTemp: 23,
-        peakSeasonTropicsTemp: 28.5
+        offSeasonPolarTemp: 10,
+        peakSeasonPolarTemp: 30,
+        offSeasonTropicsTemp: 60,
+        peakSeasonTropicsTemp: 80
     }
 };
 ENV_DEFS[SIM_MODE_EXPERIMENTAL].SST = {
