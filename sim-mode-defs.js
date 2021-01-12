@@ -1113,10 +1113,10 @@ ENV_DEFS[SIM_MODE_MEGABLOBS].SST = {
 ENV_DEFS[SIM_MODE_EXPERIMENTAL].SST = {
     version:1,
     modifiers: {
-        offSeasonPolarTemp: 1000,
-        peakSeasonPolarTemp: -500,
-        offSeasonTropicsTemp: -500,
-        peakSeasonTropicsTemp: 1000
+        offSeasonPolarTemp: 2000,
+        peakSeasonPolarTemp: -1000,
+        offSeasonTropicsTemp: -1000,
+        peakSeasonTropicsTemp: 2000
     }
 };
 ENV_DEFS[SIM_MODE_WPAC].SST = {
@@ -1146,18 +1146,18 @@ ENV_DEFS[SIM_MODE_WPAC].SST = {
 ENV_DEFS[SIM_MODE_EXTREME].SST = {
     version:1,
     modifiers: {
-        offSeasonPolarTemp: 500,
-        peakSeasonPolarTemp: -500,
-        offSeasonTropicsTemp: -200,
-        peakSeasonTropicsTemp: 400
+        offSeasonPolarTemp: 750,
+        peakSeasonPolarTemp: -750,
+        offSeasonTropicsTemp: -750,
+        peakSeasonTropicsTemp: 750
     }
 };
 ENV_DEFS[SIM_MODE_ULTRA].SST = {
     version:1,
     modifiers: {
         offSeasonPolarTemp: 2500,
-        peakSeasonPolarTemp: 2500,
-        offSeasonTropicsTemp: 2500,
+        peakSeasonPolarTemp: -2500,
+        offSeasonTropicsTemp: -2500,
         peakSeasonTropicsTemp: 2500
     }
 };
