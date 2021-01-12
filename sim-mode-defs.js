@@ -1,4 +1,4 @@
-const SIMULATION_MODES = ['Above Average','Hyper','Wild','Megablobs','Experimental','West Pacific','Extreme']; // Labels for sim mode selector UI
+const SIMULATION_MODES = ['Above Average','Hyper','Wild','Megablobs','Experimental','West Pacific','Extreme','Hot']; // Labels for sim mode selector UI
 const SIM_MODE_NORMAL = 0;
 const SIM_MODE_HYPER = 1;
 const SIM_MODE_WILD = 2;
@@ -6,6 +6,7 @@ const SIM_MODE_MEGABLOBS = 3;
 const SIM_MODE_EXPERIMENTAL = 4;
 const SIM_MODE_WPAC = 5;
 const SIM_MODE_EXTREME = 6;
+const SIM_MODE_HOT = 7;
 // ---- Active Attributes ---- //
 
 // Active attributes are data of ActiveSystem not inherited from StormData; used for simulation of active storm systems
@@ -46,6 +47,7 @@ SPAWN_RULES[SIM_MODE_MEGABLOBS] = {};
 SPAWN_RULES[SIM_MODE_EXPERIMENTAL] = {};
 SPAWN_RULES[SIM_MODE_WPAC] = {};
 SPAWN_RULES[SIM_MODE_EXTREME] = {};
+SPAWN_RULES[SIM_MODE_HOT] = {};
 // -- Defaults -- //
 
 SPAWN_RULES.defaults.archetypes = {
@@ -457,6 +459,11 @@ SPAWN_RULES[SIM_MODE_EXTREME].doSpawn = function(b){
     // extratropical cyclones
     if(random()<0.01-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');      
 };		
+SPAWN_RULES[SIM_MODE_HOT].doSpawn = function(b){
+    if(random()<(0.013*sq((seasonalSine(b.tick)+1)/2)+0.002)) b.spawnArchetype('tw');
+
+    if(random()<0.01-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
+};
 
 // -- Megablobs Mode -- //
 
@@ -582,6 +589,7 @@ ENV_DEFS[SIM_MODE_MEGABLOBS] = {}; // "Megablobs" simulation mode
 ENV_DEFS[SIM_MODE_EXPERIMENTAL] = {}; // "Experimental" simulation mode
 ENV_DEFS[SIM_MODE_WPAC] = {};	// westpac 
 ENV_DEFS[SIM_MODE_EXTREME] = {};
+ENV_DEFS[SIM_MODE_HOT] = {};
 // -- Sample Env Field -- //
 
 // ENV_DEFS.defaults.sample = {
@@ -675,6 +683,7 @@ ENV_DEFS[SIM_MODE_WPAC].jetstream = {
     }
 };    
 ENV_DEFS[SIM_MODE_EXTREME].jetstream = {};
+ENV_DEFS[SIM_MODE_HOT].jetstream = {};
 // -- LLSteering -- //
 
 ENV_DEFS.defaults.LLSteering = {
@@ -787,6 +796,7 @@ ENV_DEFS[SIM_MODE_WPAC].LLSteering = {
 
 };    
 ENV_DEFS[SIM_MODE_EXTREME].LLSteering = {};
+ENV_DEFS[SIM_MODE_HOT].LLSteering = {};
 // -- ULSteering -- //
 
 ENV_DEFS.defaults.ULSteering = {
@@ -898,6 +908,7 @@ ENV_DEFS[SIM_MODE_WPAC].ULSteering = {
     }
 };    
 ENV_DEFS[SIM_MODE_EXTREME].ULSteering = {};
+ENV_DEFS[SIM_MODE_HOT].ULSteering = {};
 // -- shear -- //
 
 ENV_DEFS.defaults.shear = {
@@ -940,6 +951,7 @@ ENV_DEFS[SIM_MODE_MEGABLOBS].shear = {};
 ENV_DEFS[SIM_MODE_EXPERIMENTAL].shear = {};
 ENV_DEFS[SIM_MODE_WPAC].shear = {};    
 ENV_DEFS[SIM_MODE_EXTREME].shear = {}; 
+ENV_DEFS[SIM_MODE_HOT].shear = {}; 
 // -- SSTAnomaly -- //
 
 ENV_DEFS.defaults.SSTAnomaly = {
@@ -1139,6 +1151,15 @@ ENV_DEFS[SIM_MODE_EXTREME].SST = {
         peakSeasonTropicsTemp: 400
     }
 };
+ENV_DEFS[SIM_MODE_EXTREME].SST = {
+    version:1,
+    modifiers: {
+        offSeasonPolarTemp: 500,
+        peakSeasonPolarTemp: 500,
+        offSeasonTropicsTemp: 700,
+        peakSeasonTropicsTemp: 700
+    }
+};
 // -- moisture -- //
 
 ENV_DEFS.defaults.moisture = {
@@ -1211,6 +1232,7 @@ ENV_DEFS[SIM_MODE_WPAC].moisture = {
     }
 };    
 ENV_DEFS[SIM_MODE_EXTREME].moisture = {};
+ENV_DEFS[SIM_MODE_HOT].moisture = {};
 // ---- Active Storm System Algorithm ---- //
 
 const STORM_ALGORITHM = {};
@@ -1223,6 +1245,7 @@ STORM_ALGORITHM[SIM_MODE_MEGABLOBS] = {};
 STORM_ALGORITHM[SIM_MODE_EXPERIMENTAL] = {};
 STORM_ALGORITHM[SIM_MODE_WPAC] = {};    
 STORM_ALGORITHM[SIM_MODE_EXTREME] = {};  
+STORM_ALGORITHM[SIM_MODE_HOT] = {};  
 // -- Steering -- //
 
 STORM_ALGORITHM.defaults.steering = function(sys,vec,u){
@@ -1407,6 +1430,7 @@ STORM_ALGORITHM[SIM_MODE_MEGABLOBS].version = 0;
 STORM_ALGORITHM[SIM_MODE_EXPERIMENTAL].version = 1;
 STORM_ALGORITHM[SIM_MODE_WPAC].version = 0;    
 STORM_ALGORITHM[SIM_MODE_EXTREME].version = 0;  
+STORM_ALGORITHM[SIM_MODE_HOT].version = 0;  
 // -- Upgrade -- //
 // Converts active attributes in case an active system is loaded after an algorithm change breaks old values
 
