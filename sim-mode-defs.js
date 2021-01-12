@@ -1032,6 +1032,7 @@ ENV_DEFS[SIM_MODE_WPAC].SSTAnomaly = {
 	},
 };
 ENV_DEFS[SIM_MODE_EXTREME].SSTAnomaly = {};    
+ENV_DEFS[SIM_MODE_HOT].SSTAnomaly = {};    
 // -- SST -- //
 
 ENV_DEFS.defaults.SST = {
@@ -1151,7 +1152,7 @@ ENV_DEFS[SIM_MODE_EXTREME].SST = {
         peakSeasonTropicsTemp: 400
     }
 };
-ENV_DEFS[SIM_MODE_EXTREME].SST = {
+ENV_DEFS[SIM_MODE_HOT].SST = {
     version:1,
     modifiers: {
         offSeasonPolarTemp: 500,
