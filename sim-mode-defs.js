@@ -1,4 +1,4 @@
-const SIMULATION_MODES = ['Above Average','Hyper','Wild','Megablobs','Experimental','West Pacific','Extreme','Hot']; // Labels for sim mode selector UI
+const SIMULATION_MODES = ['Super','Ultra Hyper','Crazy Wild','Mega Hyper','Crazy Experimental','West Pacific','Super Extreme','A bit Hot']; // Labels for sim mode selector UI
 const SIM_MODE_NORMAL = 0;
 const SIM_MODE_HYPER = 1;
 const SIM_MODE_WILD = 2;
