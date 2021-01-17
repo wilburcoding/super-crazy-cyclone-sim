@@ -1,4 +1,4 @@
-const SIMULATION_MODES = ['Not Normal','Ultra Hyper','Crazy Wild','Mega Hyper','Crazy Experimental','West Pacific','Super Extreme','A bit Hot','Global Warming']; // Labels for sim mode selector UI
+const SIMULATION_MODES = ['Not Normal','Ultra Hyper','Crazy Wild','Mega Hyper','Crazy Experimental','West Pacific','Super Extreme','A bit Hot']; // Labels for sim mode selector UI
 const SIM_MODE_NORMAL = 0;
 const SIM_MODE_HYPER = 1;
 const SIM_MODE_WILD = 2;
@@ -7,7 +7,7 @@ const SIM_MODE_EXPERIMENTAL = 4;
 const SIM_MODE_WPAC = 5;
 const SIM_MODE_EXTREME = 6;
 const SIM_MODE_HOT = 7;
-const SIM_MODE_GLOBAL = 8;
+//const SIM_MODE_GLOBAL = 8;
 // ---- Active Attributes ---- //
 
 // Active attributes are data of ActiveSystem not inherited from StormData; used for simulation of active storm systems
