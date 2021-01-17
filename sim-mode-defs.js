@@ -7,7 +7,7 @@ const SIM_MODE_EXPERIMENTAL = 4;
 const SIM_MODE_WPAC = 5;
 const SIM_MODE_EXTREME = 6;
 const SIM_MODE_HOT = 7;
-const SIM_MODE_GLOBAL = 7;
+const SIM_MODE_GLOBAL = 8;
 // ---- Active Attributes ---- //
 
 // Active attributes are data of ActiveSystem not inherited from StormData; used for simulation of active storm systems
