@@ -1,4 +1,4 @@
-const SIMULATION_MODES = ['Not Normal','Ultra Hyper','Crazy Wild','Mega Hyper','Crazy Experimental','West Pacific','Super Extreme','A bit Hot']; // Labels for sim mode selector UI
+const SIMULATION_MODES = ['Not Normal','Ultra Hyper','Crazy Wild','Mega Hyper','Crazy Experimental','West Pacific','Super Extreme','A bit Hot','Global Warming']; // Labels for sim mode selector UI
 const SIM_MODE_NORMAL = 0;
 const SIM_MODE_HYPER = 1;
 const SIM_MODE_WILD = 2;
@@ -7,7 +7,7 @@ const SIM_MODE_EXPERIMENTAL = 4;
 const SIM_MODE_WPAC = 5;
 const SIM_MODE_EXTREME = 6;
 const SIM_MODE_HOT = 7;
-const SIM_MODE_GLOBAL = 0;
+const SIM_MODE_GLOBAL = 8;
 // ---- Active Attributes ---- //
 
 // Active attributes are data of ActiveSystem not inherited from StormData; used for simulation of active storm systems
@@ -466,11 +466,7 @@ SPAWN_RULES[SIM_MODE_HOT].doSpawn = function(b){
 
     if(random()<0.01-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
 };
-SPAWN_RULES[SIM_MODE_GLOBAL].doSpawn = function(b){
-    if(random()<(0.08*sq((seasonalSine(b.tick)+1)/2)+0.002)) b.spawnArchetype('tw');
 
-    if(random()<0.01-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
-};
 
 // -- Megablobs Mode -- //
 
@@ -583,7 +579,11 @@ SPAWN_RULES[SIM_MODE_EXTREME].archetypes = {
         kaboom: 0.2
     }
 };
+SPAWN_RULES[SIM_MODE_GLOBAL].doSpawn = function(b){
+    if(random()<(0.08*sq((seasonalSine(b.tick)+1)/2)+0.002)) b.spawnArchetype('tw');
 
+    if(random()<0.01-0.002*seasonalSine(b.tick)) b.spawnArchetype('ex');
+};
 // ---- Definitions of Environmental Fields ---- //
 
 const ENV_DEFS = {};
