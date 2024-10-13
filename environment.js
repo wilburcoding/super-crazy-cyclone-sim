@@ -592,7 +592,7 @@ class Land{
     }
 
     *draw(){
-        yield "Rendering land...";
+        yield "Generating Monster Storms...";
         let {fullW: W, fullH: H} = fullDimensions();
         let scl = W/WIDTH;
         let lget = (x,y)=>this.get(x/scl,y/scl);
@@ -669,7 +669,7 @@ class Land{
     }
 
     *drawSnow(){
-        yield "Rendering " + (random()<0.02 ? "sneaux" : "snow") + "...";
+        yield "Rendering " + (random()<0.2 ? "global warming" : "boiling SSTs") + "...";
         let W = deviceOrientation===PORTRAIT ? displayHeight : displayWidth;
         let H = W*HEIGHT/WIDTH;
         let scl = W/WIDTH;
@@ -690,7 +690,7 @@ class Land{
     }
 
     *drawShader(){
-        yield "Rendering shader...";
+        yield "Rendering chocolate ice cream...";
         let W = deviceOrientation===PORTRAIT ? displayHeight : displayWidth;
         let H = W*HEIGHT/WIDTH;
         let scl = W/WIDTH;

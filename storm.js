@@ -14,7 +14,7 @@ class Storm{
         this.designations = {};
         this.designations.primary = [];
         this.designations.secondary = [];
-
+			
         this.birthTime = this.current ? basin.tick : undefined;     // tick formed as a disturbance/low
         this.formationTime = undefined;                             // tick formed as a TC
         this.enterTime = undefined;                                 // tick formed in/entered basin as a TC
@@ -182,8 +182,8 @@ class Storm{
                 break;
             case TROPWAVE:
                 if(hasbeenTC){
-                    if(name) str += 'Remnants of ' + name;
-                    else str += 'Remnant Low';
+                    if(name) str += 'Sad Remnants of ' + name;
+                    else str += 'Sad Remnant Low';
                 }else{
                     if(name) str += 'Invest ' + name;
                     else str += 'Tropical Wave';
@@ -1200,7 +1200,7 @@ class ActiveSystem extends StormData{
         let s = this.trackForecast.stVec;
         this.trackForecast.points = [];
         p.set(this.pos);
-        for(let f=0;f<120;f++){
+        for(let f=0;f<140;f++){
             let t = basin.tick+f;
             // Copy-paste from getSteering (will do something better in future)
             let l = basin.env.get("LLSteering",p.x,p.y,t);

@@ -1,12 +1,12 @@
 const TITLE = "Super Crazy Cyclone Simulator";
-const VERSION_NUMBER = "0.3.9.9m";
+const VERSION_NUMBER = " IDK What Update";
 
 const SAVE_FORMAT = 6;  // Format #6 in use starting in v0.2
 const EARLIEST_COMPATIBLE_FORMAT = 0;
 const ENVDATA_COMPATIBLE_FORMAT = 0;
 
-const WIDTH = 960; // 16:9 aspect ratio
-const HEIGHT = 540;
+const WIDTH = 1062; // 16:9 aspect ratio
+const HEIGHT = 600;
 const DIAMETER = 20;    // Storm icon diameter
 const PERLIN_ZOOM = 100;    // Resolution for perlin noise
 const TICK_DURATION = 3600000;  // How long in sim time does a tick last in milliseconds (1 hour)
@@ -117,6 +117,38 @@ const MAP_TYPES = [     // Land generation controls for different map types
     {   // "Mediterranean" map type
         form: 'pixelmap',
         path: 'resources/Medi.png'
+    },
+		{   // "Mediterranean" map type
+        form: 'pixelmap',
+        path: 'resources/Miseo.png'
+    },
+		{   // "Mediterranean" map type
+        form: 'pixelmap',
+        path: 'resources/unknown.png'
+    },
+		{   // "Mediterranean" map type
+        form: 'pixelmap',
+        path: 'resources/kepler22b2.png'
+    },
+		{   // "Mediterranean" map type
+        form: 'pixelmap',
+        path: 'resources/mars.png'
+    },
+		{   // "Mediterranean" map type
+        form: 'pixelmap',
+        path: 'resources/marsflooded.png'
+    },
+		{   // "Mediterranean" map type
+        form: 'pixelmap',
+        path: 'resources/ocean.png'
+    },
+		{   // "Mediterranean" map type
+        form: 'pixelmap',
+        path: 'resources/moon1.png'
+    },
+		{   // "Mediterranean" map type
+        form: 'pixelmap',
+        path: 'resources/sepac.png'
     }
 ];
 const EXTROP = 0;
@@ -207,6 +239,7 @@ const COLORS = {};      // For storing all colors used in the graphics
 
 function defineColors(){    // Since p5 color() function doesn't work until setup(), this is called in setup()
     COLORS.bg = color(10,55,155);
+		//COLORS.bg = color(255);
     COLORS.storm = {};
     COLORS.storm[EXTROP] = color(220,220,220);
     COLORS.storm[TROPWAVE] = color(130,130,240);

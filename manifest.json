@@ -1,0 +1,26 @@
+{
+  "short_name": "Cyclone Simulator",
+  "name": "Super Crazy Cyclone Simulator",
+  "description": "A crazy cyclone season simulator using p5.js",
+  "categories": [
+    "science",
+    "game",
+    "hurricanes"
+  ],
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "background_color": "#e05a47",
+  "theme_color": "#e05a47",
+  "display": "fullscreen",
+  "start_url": "https://super-crazy-cyclone-sim.wilburthecoder.repl.co/index.html",
+  "orientation": "landscape",
+  "url": "https://super-crazy-cyclone-sim.wilburthecoder.repl.co/",
+  "manifestUrl": "https://super-crazy-cyclone-sim.wilburthecoder.repl.co/manifest.webmanifest",
+  "lang": "en",
+  "screenshots": []
+}

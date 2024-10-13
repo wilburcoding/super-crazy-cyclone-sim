@@ -75,7 +75,6 @@ function coordinateInCanvas(x,y,isPixelCoordinate){
 function cbrt(n){   // Cubed root function since p5 doesn't have one nor does pow(n,1/3) work for negative numbers
     return n<0 ? -pow(abs(n),1/3) : pow(n,1/3);
 }
-
 function zeroPad(n,d){
     n = parseFloat(n);
     if(!Number.isNaN(n)){

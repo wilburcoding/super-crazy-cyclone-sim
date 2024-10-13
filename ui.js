@@ -337,7 +337,7 @@ UI.init = function(){
         if(UI.viewBasin instanceof Basin){
             let basin = UI.viewBasin;
             if(basin.godMode && keyIsPressed && basin.viewingPresent()) {
-                if(['l','x','d','D','s','S','1','2','3','4','5','6','7','8','9','0','y'].includes(key))
+                if(['l','x','d','D','s','S','1','2','3','4','5','6','7','8','9','0','y','h','p','u','m'].includes(key))
                     basin.spawnArchetype(key,getMouseX(),getMouseY());
                 // let g = {x: getMouseX(), y: getMouseY()};
                 // if(key === "l" || key === "L"){
@@ -415,32 +415,46 @@ UI.init = function(){
         noStroke();
         s.fullRect();
     },true,false);
-
+		function wait(ms){
+			var start = new Date().getTime();
+			var end = start;
+			while(end < start + ms) {
+				end = new Date().getTime();
+			}
+		}
     // main menu
-
+		var items = ["Create seasons that wreck the world!","Simulate your own monster storms!","Destroy all of humanity!","Boil the planet!","Rip the world to pieces!",'Create storms stronger than Jupiter\'s big red spot!',"Stimulate massive temperature swings!",'Beat 2020 by 50 times!!',"Stimulate seasons with more than 1000 storms!","Destroy Exoplanets!"]
+		var times = 0;
+		var thing = items[Math.floor(Math.random()*items.length)];
     mainMenu.append(false,WIDTH/2,HEIGHT/4,0,0,function(s){  // title text
         fill(COLORS.UI.text);
         noStroke();
         textAlign(CENTER,CENTER);
-        textSize(36);
+        textSize(50);
         text(TITLE,0,0);
-        textSize(18);
+        textSize(25);
         textStyle(ITALIC);
-        text("Simulate your own monster storms!",0,40);
+				times = times + 1
+				text(thing, 0,40);
+				if (times > 150) {
+					thing = items[Math.floor(Math.random()*items.length)];
+					times = 0;
+				}
+        
     });
-
-    mainMenu.append(false,WIDTH/2-100,HEIGHT/2-20,200,40,function(s){    // "New Basin" button
+		
+    mainMenu.append(false,WIDTH/2-100,HEIGHT/2-20,200,50,function(s){    // "New Basin" button
         s.button('New Basin',true,24);
     },function(){
         mainMenu.hide();
         basinCreationMenu.show();
-    }).append(false,0,60,200,40,function(s){     // load button
+    }).append(false,0,60,200,50,function(s){     // load button
         s.button('Load Basin',true,24);
     },function(){
         mainMenu.hide();
         loadMenu.show();
         loadMenu.refresh();
-    }).append(false,0,60,200,40,function(s){     // settings menu button
+    }).append(false,0,60,200,50,function(s){     // settings menu button
         s.button('Settings',true,24);
     },function(){
         mainMenu.hide();
@@ -532,11 +546,18 @@ UI.init = function(){
         let mode = newBasinSettings.actMode || 0;
         mode = SIMULATION_MODES[mode];
         s.button('Simulation Mode: '+mode,true);
+				if (SIMULATION_MODES[newBasinSettings.actMode]==undefined) {
+						document.title = "2005 Mode on Super Crazy Cyclone Simulator";
+				} else {
+				document.title = SIMULATION_MODES[newBasinSettings.actMode] + " Mode on Super Crazy Cyclone Simulator";
+				}
+			
     },function(){
         yearselbox.enterFunc();
         if(newBasinSettings.actMode===undefined) newBasinSettings.actMode = 0;
         newBasinSettings.actMode++;
         newBasinSettings.actMode %= SIMULATION_MODES.length;
+				
     }).append(false,0,basinCreationMenuButtonSpacing,basinCreationMenuButtonWidths,basinCreationMenuButtonHeights,function(s){    // Scale selector
         let scale = newBasinSettings.scale || 0;
         scale = Scale.presetScales[scale].displayName;
@@ -586,7 +607,7 @@ UI.init = function(){
         newBasinSettings.designations++;
         newBasinSettings.designations %= DesignationSystem.presetDesignationSystems.length;
     }).append(false,0,basinCreationMenuButtonSpacing,basinCreationMenuButtonWidths,basinCreationMenuButtonHeights,function(s){     // Map type Selector
-        let maptype = ["Two Continents","East Continent","West Continent","Island Ocean","Central Continent","Central Inland Sea","Atlantic",'Eastern Pacific','Western Pacific','Northern Indian Ocean','Australian Region','South Pacific','South-West Indian Ocean','South Atlantic','Mediterranean'][newBasinSettings.mapType || 0];
+        let maptype = ["Two Continents","East Continent","West Continent","Island Ocean","Central Continent","Central Inland Sea","Atlantic",'Eastern Pacific','Western Pacific','Northern Indian Ocean','Australian Region','South Pacific','South-West Indian Ocean','South Atlantic','Mediterranean','Miseo','Great Lakes','Kepler 22b','Mars','Mars Flooded','Open Ocean','Moon','South-Eastern Pacific'][newBasinSettings.mapType || 0];
         s.button('Map Type: '+maptype,true);
     },function(){
         yearselbox.enterFunc();
@@ -840,7 +861,7 @@ UI.init = function(){
         noStroke();
         textAlign(CENTER,CENTER);
         textSize(36);
-        text("Are You Sure?",0,0);
+        text("Are You Sure????",0,0);
         if(areYouSure.desc){
             textSize(24);
             text(areYouSure.desc,0,50);
@@ -1822,9 +1843,9 @@ UI.init = function(){
             textAlign(CENTER,TOP);
             textSize(18);
             if(target === undefined)
-                text('No timeline selected', BOX_WIDTH * 0.5, BOX_HEIGHT * 0.03);
+                text('No timeline selected', BOX_WIDTH * 0.5, BOX_HEIGHT * 0.04);
             else if(target instanceof Storm){
-                text('Intensity graph of ' + target.getFullNameByTick('peak'), BOX_WIDTH * 0.5, BOX_HEIGHT * 0.03);
+                text('Intensity graph of ' + target.getFullNameByTick('peak'), BOX_WIDTH * 0.5, BOX_HEIGHT * 0.04);
                 season_button.show();
                 let begin_tick = target.enterTime;
                 let end_tick = target.exitTime || UI.viewBasin.tick;
@@ -1865,7 +1886,7 @@ UI.init = function(){
                     let x = map(UI.viewBasin.tickFromMoment(m), begin_tick, end_tick, lBound, rBound, true);
                     line(x, bBound, x, tBound);
                     noStroke();
-                    text(m.date(), x, bBound + BOX_HEIGHT * 0.02);
+                    text(m.date(), x, bBound + BOX_HEIGHT * 0.03);
                 }
                 textAlign(RIGHT, CENTER);
                 let y_axis_inc = ceil((max_wind / 10) / 5) * 5;
@@ -1893,12 +1914,12 @@ UI.init = function(){
                         stroke('#CCC');
                     strokeWeight(5);
                     point(x0, y0);
-                    strokeWeight(2);
+                    strokeWeight(3);
                     line(x0, y0, x1, y1);
                 }
                 strokeWeight(1);
             }else{
-                text('Timeline of ' + seasonName(target), BOX_WIDTH * 0.5, BOX_HEIGHT * 0.03);
+                text('Timeline of ' + seasonName(target), BOX_WIDTH * 0.5, BOX_HEIGHT * 0.04);
                 stroke(COLORS.UI.text);
                 line(lBound,bBound,rBound,bBound);
                 line(lBound,bBound,lBound,tBound);
@@ -1910,7 +1931,7 @@ UI.init = function(){
                     let x1 = map(i+0.5,0,months,lBound,rBound);
                     line(x0,bBound,x0,tBound);
                     noStroke();
-                    text(M[(i+sMonth)%12],x1,bBound+BOX_HEIGHT*0.02);
+                    text(M[(i+sMonth)%12],x1,bBound+BOX_HEIGHT*0.03);
                 }
                 noStroke();
                 for(let i=0;i<parts.length;i++){

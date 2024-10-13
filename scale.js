@@ -234,7 +234,7 @@ Scale.saffirSimpson = new Scale({
     flavorDisplayNames: ['Hurricane','Typhoon','Cyclone'],
     classifications: [
         {
-            threshold: 0,
+            threshold: 32,
             color: ['rgb(20,20,230)','#5ebaff'],
             subtropicalColor: ['rgb(60,60,220)','#5ebaff'],
             symbol: 'D',
@@ -245,7 +245,7 @@ Scale.saffirSimpson = new Scale({
             cName: 'Depression'
         },
         {
-            threshold: 34,
+            threshold: 33,
             color: ['rgb(20,230,20)','#00faf4'],
             subtropicalColor: ['rgb(60,220,60)','#00faf4'],
             symbol: 'S',
@@ -299,7 +299,282 @@ Scale.saffirSimpson = new Scale({
         }
     ]
 });
-
+Scale.saffirSimpsonInvest = new Scale({
+    displayName: 'Saffir-Simpson Invest Test',
+    colorSchemeDisplayNames: ['Classic','Wiki'],
+    flavorDisplayNames: ['Hurricane','Typhoon','Cyclone'],
+    classifications: [
+			{
+            threshold: 0,
+            color: ['rgb(130,130,240)','#8282F0'],
+            subtropicalColor: ['rgb(60,60,220)','#5ebaff'],
+            symbol: 'L',
+            arms: 0,
+            stormNom: 'Invest',
+            stat: 'Invests',
+            cName: 'Invest'
+        },
+        {
+            threshold: 30,
+            color: ['rgb(20,20,230)','#5ebaff'],
+            subtropicalColor: ['rgb(60,60,220)','#5ebaff'],
+            symbol: 'D',
+            arms: 0,
+            stormNom: 'Tropical Depression',
+            subtropicalStormNom: 'Subtropical Depression',
+            stat: 'Depressions',
+            cName: 'Depression'
+        },
+        {
+            threshold: 33,
+            color: ['rgb(20,230,20)','#00faf4'],
+            subtropicalColor: ['rgb(60,220,60)','#00faf4'],
+            symbol: 'S',
+            stormNom: 'Tropical Storm',
+            subtropicalStormNom: 'Subtropical Storm',
+            stat: 'Named Storms',
+            cName: 'Storm'
+        },
+        {
+            threshold: 64,
+            color: ['rgb(230,230,20)','#ffffcc'],
+            symbol: '1',
+            stormNom: ['Hurricane','Typhoon','Cyclone'],
+            stat: ['Hurricanes','Typhoons','Cyclones'],
+            cName: 'Category 1'
+        },
+        {
+            threshold: 83,
+            color: ['rgb(240,170,20)','#ffe775'],
+            symbol: '2',
+            cName: 'Category 2'
+        },
+        {
+            threshold: 96,
+            color: ['rgb(240,20,20)','#ffc140'],
+            symbol: '3',
+            stormNom: ['Major Hurricane','Typhoon','Cyclone'],
+            stat: ['Major Hurricanes','Category 3+','Category 3+'],
+            cName: 'Category 3'
+        },
+        {
+            threshold: 113,
+            color: ['rgb(250,40,250)','#ff8f20'],
+            symbol: '4',
+            cName: 'Category 4'
+        },
+        {
+            threshold: 130,
+            color: ['rgb(250,40,250)','#ff8f20'],
+            symbol: '4',
+            stormNom: ['Major Hurricane','Super Typhoon','Cyclone'],
+            stat: [undefined,'Super Typhoons'],
+            cName: 'Category 4 STY'
+        },
+        {
+            threshold: 137,
+            color: ['rgb(250,140,250)','#ff6060'],
+            symbol: '5',
+            stat: 'Category 5s',
+            cName: 'Category 5'
+        }
+    ]
+});
+Scale.snowscale = new Scale({
+    displayName:'Snowcane Scale',
+    colorSchemeDisplayNames: ['Classic','Wiki'],
+    flavorDisplayNames: ['Hurricane','Typhoon','Cyclone'],
+    classifications: [
+        {
+            threshold: 0,
+            color: ['rgb(20,20,230)','#5ebaff'],
+            subtropicalColor: ['rgb(60,60,220)','#5ebaff'],
+            symbol: 'D',
+            arms: 0,
+            stormNom: 'Snow Depression',
+            subtropicalStormNom: 'Subtropical Snow Depression',
+            stat: 'Snow Depressions',
+            cName: 'Snow Depression'
+        },
+        {
+            threshold: 34,
+            color: ['rgb(20,230,20)','#00faf4'],
+            subtropicalColor: ['rgb(60,220,60)','#00faf4'],
+            symbol: 'S',
+            stormNom: 'Snow Storm',
+            subtropicalStormNom: 'Subtropical Snow Storm',
+            stat: 'Named Snow Storms',
+            cName: 'Snow Storm'
+        },
+        {
+            threshold: 64,
+            color: ['rgb(230,230,20)','#ffffcc'],
+            symbol: '1',
+            stormNom: ['Severe Snow Storm','Severe Snow Typhoon','Severe Snow Cyclone'],
+            stat: ['Severe Snow Storms','Severe Snow Typhoons','Severe Snow Cyclones'],
+            cName: 'Category 1'
+        },
+        {
+            threshold: 83,
+            color: ['rgb(240,170,20)','#ffe775'],
+            symbol: '2',
+						stormNom: ['Very Severe Snow Storm','Very Severe Snow Typhoon','Very Severe Snow Cyclone'],
+            cName: 'Category 2'
+        },
+        {
+            threshold: 96,
+            color: ['rgb(240,20,20)','#ffc140'],
+            symbol: '3',
+            stormNom: ['Extremely Severe Snow Storm','Extremely Severe Snow Typhoon','Extremely Severe Snow Cyclone'],
+            stat: ['Major Snow Storms','Major Snow Typhoons','Major Snow Cyclones'],
+            cName: 'Category 3'
+        },
+        {
+            threshold: 113,
+            color: ['rgb(250,40,250)','#ff8f20'],
+            symbol: '4',
+						stormNom: ['Monster Snow Storm','Monster Snow Typhoon','Monstor Snow Cyclone'],
+            cName: 'Category 4'
+        },
+        {
+            threshold: 137,
+            color: ['rgb(250,140,250)','#ff6060'],
+            symbol: '5',
+            stat: 'Super Snow Storm',
+            cName: 'Category 5'
+        }
+    ]
+});
+Scale.dustscale = new Scale({
+    displayName:'Duststorm Scale',
+    colorSchemeDisplayNames: ['Classic','Wiki'],
+    flavorDisplayNames: ['Hurricane','Typhoon','Cyclone'],
+    classifications: [
+        {
+            threshold: 0,
+            color: ['rgb(20,20,230)','#5ebaff'],
+            subtropicalColor: ['rgb(60,60,220)','#5ebaff'],
+            symbol: 'D',
+            arms: 0,
+            stormNom: 'Dust Depression',
+            subtropicalStormNom: 'Subtropical Dust Depression',
+            stat: 'Dust Depressions',
+            cName: 'Dust Depression'
+        },
+        {
+            threshold: 34,
+            color: ['rgb(20,230,20)','#00faf4'],
+            subtropicalColor: ['rgb(60,220,60)','#00faf4'],
+            symbol: 'S',
+            stormNom: 'Dust Storm',
+            subtropicalStormNom: 'Subtropical Dust Storm',
+            stat: 'Named Dust Storms',
+            cName: 'Dust Storm'
+        },
+        {
+            threshold: 64,
+            color: ['rgb(230,230,20)','#ffffcc'],
+            symbol: '1',
+            stormNom: ['Severe Dust Storm','Severe Dust Typhoon','Severe Dust Cyclone'],
+            stat: ['Severe Dust Storms','Severe Dust Typhoons','Severe Dust Cyclones'],
+            cName: 'Category 1'
+        },
+        {
+            threshold: 83,
+            color: ['rgb(240,170,20)','#ffe775'],
+            symbol: '2',
+						stormNom: ['Very Severe Dust Storm','Very Severe Dust Typhoon','Very Severe Dust Cyclone'],
+            cName: 'Category 2'
+        },
+        {
+            threshold: 96,
+            color: ['rgb(240,20,20)','#ffc140'],
+            symbol: '3',
+            stormNom: ['Extremely Severe Dust Storm','Extremely Severe Dust Typhoon','Extremely Severe Dust Cyclone'],
+            stat: ['Major Dust Storms','Major Dust Typhoons','Major Dust Cyclones'],
+            cName: 'Category 3'
+        },
+        {
+            threshold: 113,
+            color: ['rgb(250,40,250)','#ff8f20'],
+            symbol: '4',
+						stormNom: ['Monster Dust Storm','Monster Dust Typhoon','Monstor Dust Cyclone'],
+            cName: 'Category 4'
+        },
+        {
+            threshold: 137,
+            color: ['rgb(250,140,250)','#ff6060'],
+            symbol: '5',
+            stat: 'Super Dust Storm',
+            cName: 'Category 5'
+        }
+    ]
+});
+Scale.globalWarming = new Scale({
+    displayName: 'Global Warming',
+    colorSchemeDisplayNames: ['Classic','Wiki'],
+    flavorDisplayNames: ['Hurricane','Typhoon','Cyclone'],
+    classifications: [
+        {
+            threshold: 0,
+            color: ['rgb(20,20,230)','#5ebaff'],
+            subtropicalColor: ['rgb(60,60,220)','#5ebaff'],
+            symbol: 'D',
+            arms: 0,
+            stormNom: 'Sad Depression',
+            subtropicalStormNom: 'Subtropical Depression',
+            stat: 'Depressions',
+            cName: 'Depression'
+        },
+        {
+            threshold: 43,
+            color: ['rgb(20,230,20)','#00faf4'],
+            subtropicalColor: ['rgb(60,220,60)','#00faf4'],
+            symbol: 'S',
+            stormNom: 'Weak Storm',
+            subtropicalStormNom: 'Subtropical Storm',
+            stat: 'Named Storms',
+            cName: 'Storm'
+        },
+        {
+            threshold: 100,
+            color: ['rgb(230,230,20)','#ffffcc'],
+            symbol: '1',
+            stormNom: ['Severe Storm','Severe Typhoon','Severe Cyclone'],
+            stat: ['Severe Storms','Severe Typhoons','Severe Cyclones'],
+            cName: 'Category 1'
+        },
+        {
+            threshold: 173,
+            color: ['rgb(240,170,20)','#ffe775'],
+            symbol: '2',
+						stormNom: ['Very Severe Storm','Very Severe Typhoon','Very Severe Cyclone'],
+            cName: 'Category 2'
+        },
+        {
+            threshold: 243,
+            color: ['rgb(240,20,20)','#ffc140'],
+            symbol: '3',
+            stormNom: ['Extremely Severe Storm','Extremely Severe Typhoon','Extremely Severe Cyclone'],
+            stat: ['Major Storms','Major Typhoons','Major Cyclones'],
+            cName: 'Category 3'
+        },
+        {
+            threshold: 312,
+            color: ['rgb(250,40,250)','#ff8f20'],
+            symbol: '4',
+						stormNom: ['Monster Storm','Monster Typhoon','Monstor Cyclone'],
+            cName: 'Category 4'
+        },
+        {
+            threshold: 500,
+            color: ['rgb(250,140,250)','#ff6060'],
+            symbol: '5',
+            stat: 'Superstorms',
+            cName: 'Category 5'
+        }
+    ]
+});
 Scale.extendedSaffirSimpson = new Scale({
     displayName: 'Extended Saffir-Simpson',
     colorSchemeDisplayNames: ['Classic','Wiki'],
@@ -407,6 +682,36 @@ Scale.extendedSaffirSimpson = new Scale({
             stormNom: ['Hypercane','Hyperphoon','Hyperclone'],
             stat: ['Hypercanes','Hyperphoons','Hyperclones'],
             cName: 'Hypercane'
+        },
+				{
+            threshold: 521,
+            color: ['rgb(137,141,1630)','#ff99ff'],
+            symbol: 'MC',
+            stormNom: ['Megacane','Megaphoon','Megaclone'],
+            cName: 'Megacane'
+        },
+				{
+            threshold: 608,
+            color: ['rgb(78,83,105)','#ff99ff'],
+            symbol: 'UC',
+            stormNom: ['Ultracane','Ultraphoon','Ultraclone'],
+
+            cName: 'Ultracane'
+        },
+				{
+            threshold: 695,
+            color: ['rgb(59,61,67)','#ff99ff'],
+            symbol: 'SC',
+            stormNom: ['Supercane','Superphoon','Superclone'],
+            cName: 'Supercane'
+        },
+				{
+            threshold: 782,
+            color: ['rgb(0,0,0)','#ff99ff'],
+            symbol: 'MBH',
+            stormNom: ['Mini Black Hole','Mini Black Hole','Mini Black Hole'],
+            stat: ['Mini Black Holes','Mini Black Holes','Mini Black Holes'],
+            cName: 'Mini Black Hole'
         }
     ]
 });
@@ -518,7 +823,61 @@ Scale.typhoonCommittee = new Scale({
         }
     ]
 });
-
+Scale.jointTyphoon = new Scale({
+    displayName: 'Joint Typhoon Warning Center',
+    colorSchemeDisplayNames: ['Classic','Wiki'],
+    flavorDisplayNames: ['Typhoon'],
+    classifications: [
+        {
+            threshold: 0,
+            color: ['rgb(20,20,230)','#5ebaff'],
+            subtropicalColor: ['rgb(60,60,220)','#5ebaff'],
+            symbol: 'D',
+            arms: 0,
+            stormNom: 'Tropical Depression',
+            subtropicalStormNom: 'Subtropical Depression',
+            stat: 'Depressions',
+            cName: 'Depression'
+        },
+        {
+            threshold: 34,
+            color: ['rgb(20,230,20)','#00faf4'],
+            subtropicalColor: ['rgb(60,220,60)','#00faf4'],
+            symbol: 'S',
+            stormNom: 'Tropical Storm',
+            subtropicalStormNom: 'Subtropical Storm',
+            stat: 'Named Storms',
+            cName: 'Storm'
+        },
+        {
+            threshold: 48,
+            color: ['rgb(180,230,20)','#ccffff'],
+            subtropicalColor: ['rgb(180,220,85)','#ccffff'],
+            symbol: 'STS',
+            subtropicalSymbol: 'SSS',
+            stormNom: 'Severe Tropical Storm',
+            subtropicalStormNom: 'Severe Subtropical Storm',
+            stat: 'Severe',
+            cName: 'Severe'
+        },
+        {
+            threshold: 64,
+            color: ['rgb(240,130,20)','#fdaf9a'],
+            symbol: 'TY',
+            stormNom: 'Typhoon',
+            stat: 'Typhoons',
+            cName: 'Typhoon'
+        },
+				{
+            threshold: 130,
+            color: ['rgb(243,53,20)','#FF3600'],
+            symbol: 'STY',
+            stormNom: 'Super Typhoon',
+            stat: 'Super Typhoons',
+            cName: 'Super Typhoon'
+        }
+    ]
+});
 Scale.IMD = new Scale({
     measure: SCALE_MEASURE_TEN_MIN_KNOTS,   // technically should be 3-minute, but I didn't bother making a conversion for that
     displayName: 'India Meteorological Dept.',
@@ -684,6 +1043,8 @@ Scale.presetScales = [
     Scale.extendedSaffirSimpson,
     Scale.australian,
     Scale.typhoonCommittee,
+		Scale.jointTyphoon,
     Scale.IMD,
     Scale.southwestIndianOcean
+		
 ];
